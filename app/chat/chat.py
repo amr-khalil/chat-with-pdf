@@ -8,12 +8,12 @@ from app.chat.chains.retrieval import StreamingConversationalRetrievalChain
 def build_chat(chat_args: ChatArgs):
     retriever = build_retriever(chat_args)
     llm = build_llm(chat_args)
-    condence_question_llm = ChatOpenAI(streaming=False)
+    condense_question_llm = ChatOpenAI(streaming=False)
     memory = build_memory(chat_args)
 
     return StreamingConversationalRetrievalChain.from_llm(
         llm=llm,
-        condence_question_llm=condence_question_llm,
+        condense_question_llm=condense_question_llm,
         memory=memory,
         retriever=retriever
     )
